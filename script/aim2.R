@@ -12,12 +12,13 @@ library(doParallel)
 # Scaled data generated from aim1.R
 data.all <- read.csv('NDDPSM.csv', stringsAsFactors=F)
 
-responses <- c('ALZHEIM', 'PARKINS', 'ALS', 'MS')
+#responses <- c('ALZHEIM', 'PARKINS', 'ALS', 'MS')
+responses <- c('ALZHEIM')
 
 # Full model
-#formula_rhs <- 'AGE + diab + BMI + RACE + diab:AGE + (1 | ID)'
+formula_rhs <- 'AGE + diab + BMI + RACE + diab:AGE + diab:BMI + diab:RACE + BMI:AGE + (1 | ID)'
 # Baseline model
-formula_rhs <- 'AGE + diab + RACE + diab:AGE + (1 | ID)'
+#formula_rhs <- 'AGE + diab + RACE + diab:AGE + (1 | ID)'
 
 # Parallelism prelude
 cores <- detectCores()
